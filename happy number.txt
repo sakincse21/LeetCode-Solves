@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+        map<int,int>mp;
+        mp[n]++;
+        while(n!=1){
+            vector<int>v;
+            int m=n;
+            while(m){
+                int temp=m%10;
+                v.push_back(temp); m/=10;
+            }
+            int sum=0;
+            for(auto it:v){
+                sum+=(it*it);
+            }
+            if(mp[sum]>0){
+                return false;
+            }
+            mp[sum]++;
+            n=sum;
+        }
+        return true;
+    }
+};
